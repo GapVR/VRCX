@@ -1,3 +1,26 @@
+# VRCX Legacy SteamVR Compatibility Fork + UI tweaks
+
+**Notice:** This fork of VRCX is intended to maintain compatibility with older versions of SteamVR (tested with SteamVR 2.7.4) that was broken after 2025-08-23 and includes minor UI usability improvements. It is not the official project and may not have the latest features or updates from the main project. For the official version, please see: [https://github.com/vrcx-team/VRCX](https://github.com/vrcx-team/VRCX)
+
+**Changes (VRCX Release 2025.11.16):**
+
+NavMenu
+- Moved Favorite Worlds/Avatars/Friends to navbar.
+- Moved Notification, Friend Log, Moderation to navbar.
+- Moved Friend Locations, Friend List, Charts, Tools to "..." submenu.
+- Removed spacer & Direct Access.
+- Moved Custom Navigation, Theme, Logout to Help & Support.
+- Moved Settings to navbar.
+Sidebar
+- Restored round Direct Access button inbetween Search and Refresh friends.
+User Dialog
+- Memo placeholder always shown.
+
+SystemMonitorCef
+- Log ThreadInterruptedException exceptions.
+
+---
+
 <div align="center">
 
 # <img src="https://raw.githubusercontent.com/vrcx-team/VRCX/master/images/VRCX.ico" width="64" height="64"> </img> VRCX
