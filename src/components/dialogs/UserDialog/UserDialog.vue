@@ -121,7 +121,7 @@
                             </div>
                         </div>
                         <div
-                            v-if="userDialog.memo && !hideUserMemos"
+                            v-if="!hideUserMemos"
                             class="x-friend-item"
                             style="width: 100%; cursor: pointer">
                             <div class="detail" @click="isEditNoteAndMemoDialogVisible = true">

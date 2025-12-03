@@ -8,7 +8,7 @@
                 remote
                 :remote-method="quickSearchRemoteMethod"
                 popper-class="x-quick-search"
-                style="flex: 1; padding: 10px"
+                style="flex: 1; padding: 5px"
                 @change="quickSearchChange">
                 <el-option v-for="item in quickSearchItems" :key="item.value" :value="item.value" :label="item.label">
                     <div class="x-friend-item">
@@ -41,19 +41,30 @@
                 </el-option>
             </el-select>
             <div>
+
+                <el-tooltip placement="bottom" :content="t('prompt.direct_access_omni.header')">
+                    <el-button
+                        type="default"
+                        size=""
+                        :icon="Compass"
+                        circle
+                        style="margin-right: -5px"
+                        @click="directAccessPaste"></el-button>
+                </el-tooltip>
+
                 <el-tooltip placement="bottom" :content="t('side_panel.refresh_tooltip')">
                     <el-button
                         type="default"
                         :loading="isRefreshFriendsLoading"
-                        size="small"
+                        size=""
                         :icon="Refresh"
                         circle
-                        style="margin-right: 10px"
+                        style="margin-right: 5px"
                         @click="refreshFriendsList"></el-button>
                 </el-tooltip>
             </div>
         </div>
-        <el-tabs class="zero-margin-tabs" stretch style="height: calc(100% - 60px); margin-top: 5px">
+        <el-tabs class="zero-margin-tabs" stretch style="height: calc(100% - 40px); margin-top: 0px">
             <el-tab-pane>
                 <template #label>
                     <span>{{ t('side_panel.friends') }}</span>
@@ -79,6 +90,7 @@
 
 <script setup>
     import { Refresh } from '@element-plus/icons-vue';
+    import { Compass } from '@element-plus/icons-vue';
     import { storeToRefs } from 'pinia';
     import { useI18n } from 'vue-i18n';
 
@@ -88,6 +100,7 @@
     import FriendsSidebar from './components/FriendsSidebar.vue';
     import GroupsSidebar from './components/GroupsSidebar.vue';
 
+const { directAccessPaste } = useSearchStore();
     const { friends, isRefreshFriendsLoading, onlineFriendCount } = storeToRefs(useFriendStore());
     const { refreshFriendsList, confirmDeleteFriend } = useFriendStore();
     const { quickSearchRemoteMethod, quickSearchChange } = useSearchStore();

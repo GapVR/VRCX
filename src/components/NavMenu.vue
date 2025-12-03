@@ -68,131 +68,111 @@
                         </template>
                     </el-popover>
                 </el-menu>
-                <el-divider style="width: calc(100% - 18px); margin-left: 9px"></el-divider>
-                <el-tooltip :content="t('prompt.direct_access_omni.header')" placement="right"
-                    ><div class="bottom-button" @click="directAccessPaste"><i class="ri-compass-3-line"></i></div
-                ></el-tooltip>
             </div>
 
-            <div class="nav-menu-container-bottom">
-                <el-tooltip v-if="branch === 'Nightly'" :show-after="150" :content="'Feedback'" placement="right"
-                    ><div
-                        class="bottom-button"
-                        id="feedback"
-                        @click="!sentryErrorReporting && setSentryErrorReporting()">
-                        <i class="ri-feedback-line"></i></div
-                ></el-tooltip>
-
+<div class="nav-menu-container-bottom">
+    <el-popover
+        v-model:visible="supportMenuVisible"
+        placement="right"
+        trigger="click"
+        popper-style="padding:4px;border-radius:8px;"
+        :offset="4"
+        :show-arrow="false"
+        :width="200"
+        :hide-after="0">
+        <div class="nav-menu-support nav-menu-settings">
+            <div v-if="branch === 'Nightly'" class="nav-menu-support__section">
+                <button type="button" class="nav-menu-settings__item" @click="!sentryErrorReporting && setSentryErrorReporting()">
+                    <span>Feedback</span>
+                </button>
+            </div>
+            <el-divider v-if="branch === 'Nightly'"></el-divider>
+            <div class="nav-menu-support__section">
+                <button type="button" class="nav-menu-settings__item" @click="showChangeLogDialog">
+                    <span>{{ t('nav_menu.whats_new') }}</span>
+                </button>
+            </div>
+            <el-divider></el-divider>
+            <div class="nav-menu-support__section">
+                <span class="nav-menu-support__title">{{ t('nav_menu.resources') }}</span>
+                <button type="button" class="nav-menu-settings__item" @click="handleSupportLink('wiki')">
+                    <span>{{ t('nav_menu.wiki') }}</span>
+                </button>
+            </div>
+            <el-divider></el-divider>
+            <div class="nav-menu-support__section">
+                <span class="nav-menu-support__title">{{ t('nav_menu.get_help') }}</span>
+                <button type="button" class="nav-menu-settings__item" @click="handleSupportLink('github')">
+                    <span>{{ t('nav_menu.github') }}</span>
+                </button>
+                <button type="button" class="nav-menu-settings__item" @click="handleSupportLink('discord')">
+                    <span>{{ t('nav_menu.discord') }}</span>
+                </button>
+            </div>
+            <el-divider></el-divider>
+            <div class="nav-menu-support__section">
+                <span class="nav-menu-support__title">{{ t('nav_menu.custom_nav.header') }}</span>
+                <button type="button" class="nav-menu-settings__item" @click="handleOpenCustomNavDialog">
+                    <span>{{ t('nav_menu.custom_nav.header') }}</span>
+                </button>
+            </div>
+            <el-divider></el-divider>
+            <div class="nav-menu-support__section">
+                <span class="nav-menu-support__title">{{ t('view.settings.appearance.appearance.theme_mode') }}</span>
                 <el-popover
-                    v-model:visible="supportMenuVisible"
-                    placement="right"
-                    trigger="click"
+                    v-model:visible="themeMenuVisible"
+                    placement="right-start"
+                    trigger="hover"
                     popper-style="padding:4px;border-radius:8px;"
-                    :offset="4"
-                    :show-arrow="false"
-                    :width="200"
-                    :hide-after="0">
-                    <div class="nav-menu-support nav-menu-settings">
-                        <div class="nav-menu-support__section">
-                            <button type="button" class="nav-menu-settings__item" @click="showChangeLogDialog">
-                                <span>{{ t('nav_menu.whats_new') }}</span>
-                            </button>
-                        </div>
-                        <el-divider></el-divider>
-                        <div class="nav-menu-support__section">
-                            <span class="nav-menu-support__title">{{ t('nav_menu.resources') }}</span>
-                            <button type="button" class="nav-menu-settings__item" @click="handleSupportLink('wiki')">
-                                <span>{{ t('nav_menu.wiki') }}</span>
-                            </button>
-                        </div>
-                        <el-divider></el-divider>
-                        <div class="nav-menu-support__section">
-                            <span class="nav-menu-support__title">{{ t('nav_menu.get_help') }}</span>
-                            <button type="button" class="nav-menu-settings__item" @click="handleSupportLink('github')">
-                                <span>{{ t('nav_menu.github') }}</span>
-                            </button>
-                            <button type="button" class="nav-menu-settings__item" @click="handleSupportLink('discord')">
-                                <span>{{ t('nav_menu.discord') }}</span>
-                            </button>
-                        </div>
-                    </div>
-                    <template #reference>
-                        <div>
-                            <el-tooltip :show-after="150" :content="t('nav_tooltip.help_support')" placement="right">
-                                <div class="bottom-button">
-                                    <i class="ri-question-line"></i>
-                                </div>
-                            </el-tooltip>
-                        </div>
-                    </template>
-                </el-popover>
-
-                <el-popover
-                    v-model:visible="settingsMenuVisible"
-                    placement="right"
-                    trigger="click"
-                    popper-style="padding:4px;border-radius:8px;"
-                    :offset="4"
-                    :show-arrow="false"
-                    :width="200"
-                    :hide-after="0">
-                    <div class="nav-menu-settings">
-                        <div class="nav-menu-settings__header">
-                            <img class="nav-menu-settings__logo" :src="vrcxLogo" alt="VRCX" @click="openGithub" />
-                            <div class="nav-menu-settings__meta">
-                                <span class="nav-menu-settings__title" @click="openGithub"
-                                    >VRCX
-                                    <i class="ri-heart-3-fill" style="color: #64cd8a; font-size: 14px"></i>
-                                </span>
-                                <span class="nav-menu-settings__version">{{ version }}</span>
-                            </div>
-                        </div>
-                        <el-divider></el-divider>
-                        <button type="button" class="nav-menu-settings__item" @click="handleSettingsClick">
-                            <span>{{ t('nav_tooltip.settings') }}</span>
-                        </button>
-                        <button type="button" class="nav-menu-settings__item" @click="handleOpenCustomNavDialog">
-                            <span>{{ t('nav_menu.custom_nav.header') }}</span>
-                        </button>
-                        <el-popover
-                            v-model:visible="themeMenuVisible"
-                            placement="right-start"
-                            trigger="hover"
-                            popper-style="padding:4px;border-radius:8px;"
-                            :width="200">
-                            <div class="nav-menu-theme">
-                                <button
-                                    v-for="theme in themes"
-                                    :key="theme"
-                                    type="button"
-                                    class="nav-menu-theme__item"
-                                    :class="{ 'is-active': themeMode === theme }"
-                                    @click="handleThemeSelect(theme)">
-                                    <span class="nav-menu-theme__label">{{ themeDisplayName(theme) }}</span>
-                                    <span v-if="themeMode === theme" class="nav-menu-theme__check">✔</span>
-                                </button>
-                            </div>
-                            <template #reference>
-                                <button type="button" class="nav-menu-settings__item" @click.prevent>
-                                    <span>{{ t('view.settings.appearance.appearance.theme_mode') }}</span>
-                                    <span class="nav-menu-settings__arrow">›</span>
-                                </button>
-                            </template>
-                        </el-popover>
+                    :width="200">
+                    <div class="nav-menu-theme">
                         <button
+                            v-for="theme in themes"
+                            :key="theme"
                             type="button"
-                            class="nav-menu-settings__item nav-menu-settings__item--danger"
-                            @click="handleLogoutClick">
-                            <span>{{ t('dialog.user.actions.logout') }}</span>
+                            class="nav-menu-theme__item"
+                            :class="{ 'is-active': themeMode === theme }"
+                            @click="handleThemeSelect(theme)">
+                            <span class="nav-menu-theme__label">{{ themeDisplayName(theme) }}</span>
+                            <span v-if="themeMode === theme" class="nav-menu-theme__check">✔</span>
                         </button>
                     </div>
                     <template #reference>
-                        <div class="bottom-button">
-                            <i class="ri-settings-3-line"></i>
-                        </div>
+                        <button type="button" class="nav-menu-settings__item" @click.prevent>
+                            <span>{{ t('view.settings.appearance.appearance.theme_mode') }}</span>
+                            <span class="nav-menu-settings__arrow">›</span>
+                        </button>
                     </template>
                 </el-popover>
             </div>
+            <el-divider></el-divider>
+            <div class="nav-menu-support__section">
+                <button
+                    type="button"
+                    class="nav-menu-settings__item nav-menu-settings__item--danger"
+                    @click="handleLogoutClick">
+                    <span>{{ t('dialog.user.actions.logout') }}</span>
+                </button>
+            </div>
+        </div>
+        <template #reference>
+            <div>
+                <el-tooltip :show-after="150" :content="t('nav_tooltip.help_support')" placement="right">
+                    <div class="bottom-button">
+                        <i class="ri-question-line"></i>
+                    </div>
+                </el-tooltip>
+            </div>
+        </template>
+    </el-popover>
+
+    <el-tooltip :show-after="150" :content="t('nav_tooltip.settings')" placement="right">
+        <div class="bottom-button" @click="handleSettingsClick">
+            <i class="ri-settings-3-line"></i>
+        </div>
+    </el-tooltip>
+</div>
+
         </template>
     </div>
     <CustomNavDialog
@@ -231,32 +211,42 @@
     const { t, locale } = useI18n();
     const router = useRouter();
 
-    const createDefaultNavLayout = () => [
-        { type: 'item', key: 'feed' },
-        { type: 'item', key: 'friends-locations' },
-        { type: 'item', key: 'game-log' },
-        { type: 'item', key: 'player-list' },
-        { type: 'item', key: 'search' },
-        {
-            type: 'folder',
-            id: 'default-folder-favorites',
-            nameKey: 'nav_tooltip.favorites',
-            name: t('nav_tooltip.favorites'),
-            icon: 'ri-star-line',
-            items: ['favorite-friends', 'favorite-worlds', 'favorite-avatars']
-        },
-        {
-            type: 'folder',
-            id: 'default-folder-social',
-            nameKey: 'nav_tooltip.social',
-            name: t('nav_tooltip.social'),
-            icon: 'ri-group-line',
-            items: ['friend-log', 'friend-list', 'moderation']
-        },
-        { type: 'item', key: 'notification' },
-        { type: 'item', key: 'charts' },
-        { type: 'item', key: 'tools' }
-    ];
+const createDefaultNavLayout = () => [
+    { type: 'item', key: 'feed' },
+    { type: 'item', key: 'game-log' },
+    { type: 'item', key: 'player-list' },
+    { type: 'item', key: 'search' },
+    { type: 'item', key: 'notification' },
+    { type: 'item', key: 'friend-log' },
+    { type: 'item', key: 'moderation' },
+    { type: 'item', key: 'favorite-worlds' },
+    { type: 'item', key: 'favorite-avatars' },
+    { type: 'item', key: 'favorite-friends' },
+    {
+        type: 'folder',
+        id: 'default-folder-social',
+        nameKey: 'nav_tooltip.social',
+        name: t('nav_tooltip.social'),
+        icon: 'ri-group-line',
+        items: []
+    },
+    {
+        type: 'folder',
+        id: 'default-folder-favorites',
+        nameKey: 'nav_tooltip.favorites',
+        name: t('nav_tooltip.favorites'),
+        icon: 'ri-star-line',
+        items: []
+    },
+    {
+        type: 'folder',
+        id: 'default-folder-more',
+        nameKey: null,
+        name: '...',
+        icon: 'ri-more-line',
+        items: ['friends-locations', 'friend-list', 'charts', 'tools']
+    },
+];
 
     const navDefinitionMap = new Map(navDefinitions.map((item) => [item.key, item]));
     const DEFAULT_FOLDER_ICON = 'ri-menu-fold-line';
