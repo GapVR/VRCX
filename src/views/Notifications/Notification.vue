@@ -50,7 +50,7 @@
         </div>
 
         <DataTable v-bind="notificationTable" ref="notificationTableRef" class="notification-table">
-            <el-table-column :label="t('table.notification.date')" prop="created_at" :sortable="true" width="130">
+            <el-table-column :label="t('table.notification.date')" prop="created_at" :sortable="true" width="100">
                 <template #default="scope">
                     <el-tooltip placement="right">
                         <template #content>
@@ -61,7 +61,7 @@
                 </template>
             </el-table-column>
 
-            <el-table-column :label="t('table.notification.type')" prop="type" width="180">
+            <el-table-column :label="t('table.notification.type')" prop="type" width="140">
                 <template #default="scope">
                     <span
                         v-if="scope.row.type === 'invite'"
@@ -123,6 +123,7 @@
                 </template>
             </el-table-column>
 
+<!--
             <el-table-column :label="t('table.notification.photo')" width="100" prop="photo">
                 <template #default="scope">
                     <template v-if="scope.row.type === 'boop'">
@@ -151,46 +152,74 @@
                     </template>
                 </template>
             </el-table-column>
+-->
 
-            <el-table-column :label="t('table.notification.message')" prop="message">
-                <template #default="scope">
-                    <span v-if="scope.row.type === 'invite'" style="display: flex">
-                        <Location
-                            v-if="scope.row.details"
-                            :location="scope.row.details.worldId"
-                            :hint="scope.row.details.worldName"
-                            :grouphint="scope.row.details.groupName"
-                            :link="true" />
-                        <br v-if="scope.row.details" />
-                    </span>
-                    <div
-                        v-if="
-                            scope.row.message &&
-                            scope.row.message !== `This is a generated invite to ${scope.row.details?.worldName}`
-                        "
-                        v-text="scope.row.message"></div>
-                    <span
-                        v-else-if="scope.row.details && scope.row.details.inviteMessage"
-                        v-text="scope.row.details.inviteMessage"></span>
-                    <span
-                        v-else-if="scope.row.details && scope.row.details.requestMessage"
-                        v-text="scope.row.details.requestMessage"></span>
-                    <span
-                        v-else-if="scope.row.details && scope.row.details.responseMessage"
-                        v-text="scope.row.details.responseMessage"></span>
-                </template>
-            </el-table-column>
+<el-table-column :label="t('table.notification.message')" prop="message">
+    <template #default="scope">
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+            <div v-if="scope.row.type === 'boop' && scope.row.details?.imageUrl && !scope.row.details.imageUrl.startsWith('default_')" style="flex: 0 0 auto;">
+                <Emoji
+                    class="x-link"
+                    @click="showFullscreenImageDialog(scope.row.details.imageUrl)"
+                    :imageUrl="scope.row.details.imageUrl"
+                    :size="50"></Emoji>
+            </div>
+            <div v-else-if="scope.row.details && scope.row.details.imageUrl" style="flex: 0 0 auto;">
+                <img
+                    class="x-link"
+                    :src="getSmallThumbnailUrl(scope.row.details.imageUrl)"
+                    style="height: 50px; border-radius: 4px; max-width: 100px;"
+                    @click="showFullscreenImageDialog(scope.row.details.imageUrl)"
+                    loading="lazy" />
+            </div>
+            <div v-else-if="scope.row.imageUrl" style="flex: 0 0 auto;">
+                <img
+                    class="x-link"
+                    :src="getSmallThumbnailUrl(scope.row.imageUrl)"
+                    style="height: 50px; border-radius: 4px; max-width: 100px;"
+                    @click="showFullscreenImageDialog(scope.row.imageUrl)"
+                    loading="lazy" />
+            </div>
+            <div style="flex: 1 1 auto; min-width: 0;">
+                <span v-if="scope.row.type === 'invite'" style="display: flex">
+                    <Location
+                        v-if="scope.row.details"
+                        :location="scope.row.details.worldId"
+                        :hint="scope.row.details.worldName"
+                        :grouphint="scope.row.details.groupName"
+                        :link="true" />
+                    <br v-if="scope.row.details" />
+                </span>
+                <div
+                    v-if="
+                        scope.row.message &&
+                        scope.row.message !== `This is a generated invite to ${scope.row.details?.worldName}`
+                    "
+                    v-text="scope.row.message"></div>
+                <span
+                    v-else-if="scope.row.details && scope.row.details.inviteMessage"
+                    v-text="scope.row.details.inviteMessage"></span>
+                <span
+                    v-else-if="scope.row.details && scope.row.details.requestMessage"
+                    v-text="scope.row.details.requestMessage"></span>
+                <span
+                    v-else-if="scope.row.details && scope.row.details.responseMessage"
+                    v-text="scope.row.details.responseMessage"></span>
+            </div>
+        </div>
+    </template>
+</el-table-column>
 
-            <el-table-column :label="t('table.notification.action')" width="100" align="right">
+            <el-table-column :label="t('table.notification.action')" width="150" align="right">
                 <template #default="scope">
                     <template v-if="scope.row.senderUserId !== currentUser.id && !scope.row.$isExpired">
                         <template v-if="scope.row.type === 'friendRequest'">
                             <el-tooltip placement="top" content="Accept">
                                 <el-button
-                                    text
+                                    circle
                                     :icon="Check"
                                     style="color: #67c23a"
-                                    size="small"
+                                    size=""
                                     class="button-pd-0"
                                     @click="acceptFriendRequestNotification(scope.row)" />
                             </el-tooltip>
@@ -198,9 +227,9 @@
                         <template v-else-if="scope.row.type === 'invite'">
                             <el-tooltip placement="top" content="Decline with message">
                                 <el-button
-                                    text
+                                    circle
                                     :icon="ChatLineSquare"
-                                    size="small"
+                                    size=""
                                     class="button-pd-0"
                                     @click="showSendInviteResponseDialog(scope.row)" />
                             </el-tooltip>
@@ -210,19 +239,19 @@
                                 v-if="lastLocation.location && isGameRunning && checkCanInvite(lastLocation.location)">
                                 <el-tooltip placement="top" content="Invite">
                                     <el-button
-                                        text
+                                        circle
                                         :icon="Check"
                                         style="color: #67c23a"
-                                        size="small"
+                                        size=""
                                         class="button-pd-0"
                                         @click="acceptRequestInvite(scope.row)" />
                                 </el-tooltip>
                             </template>
                             <el-tooltip placement="top" content="Decline with message">
                                 <el-button
-                                    text
+                                    circle
                                     :icon="ChatLineSquare"
-                                    size="small"
+                                    size=""
                                     :class="['button-pd-0', 'ml-5']"
                                     @click="showSendInviteRequestResponseDialog(scope.row)" />
                             </el-tooltip>
@@ -233,68 +262,68 @@
                                 <el-tooltip placement="top" :content="response.text">
                                     <el-button
                                         v-if="response.type === 'link'"
-                                        text
+                                        circle
                                         :icon="Link"
-                                        size="small"
+                                        size=""
                                         :class="['button-pd-0', 'ml-5']"
                                         @click="openNotificationLink(response.data)" />
                                     <el-button
                                         v-else-if="response.icon === 'check'"
-                                        text
+                                        circle
                                         :icon="Check"
-                                        size="small"
+                                        size=""
                                         :class="['button-pd-0', 'ml-5']"
                                         @click="
                                             sendNotificationResponse(scope.row.id, scope.row.responses, response.type)
                                         " />
                                     <el-button
                                         v-else-if="response.icon === 'cancel'"
-                                        text
+                                        circle
                                         :icon="Close"
-                                        size="small"
+                                        size=""
                                         :class="['button-pd-0', 'ml-5']"
                                         @click="
                                             sendNotificationResponse(scope.row.id, scope.row.responses, response.type)
                                         " />
                                     <el-button
                                         v-else-if="response.icon === 'ban'"
-                                        text
+                                        circle
                                         :icon="CircleClose"
-                                        size="small"
+                                        size=""
                                         :class="['button-pd-0', 'ml-5']"
                                         @click="
                                             sendNotificationResponse(scope.row.id, scope.row.responses, response.type)
                                         " />
                                     <el-button
                                         v-else-if="response.icon === 'bell-slash'"
-                                        text
+                                        circle
                                         :icon="Bell"
-                                        size="small"
+                                        size=""
                                         :class="['button-pd-0', 'ml-5']"
                                         @click="
                                             sendNotificationResponse(scope.row.id, scope.row.responses, response.type)
                                         " />
                                     <el-button
                                         v-else-if="response.icon === 'reply' && scope.row.type === 'boop'"
-                                        text
+                                        circle
                                         :icon="ChatLineSquare"
-                                        size="small"
+                                        size=""
                                         :class="['button-pd-0', 'ml-5']"
                                         @click="showSendBoopDialog(scope.row.senderUserId)" />
                                     <el-button
                                         v-else-if="response.icon === 'reply'"
-                                        text
+                                        circle
                                         :icon="ChatLineSquare"
-                                        size="small"
+                                        size=""
                                         :class="['button-pd-0', 'ml-5']"
                                         @click="
                                             sendNotificationResponse(scope.row.id, scope.row.responses, response.type)
                                         " />
                                     <el-button
                                         v-else
-                                        text
+                                        circle
                                         :icon="CollectionTag"
-                                        size="small"
+                                        size=""
                                         :class="['button-pd-0', 'ml-5']"
                                         @click="
                                             sendNotificationResponse(scope.row.id, scope.row.responses, response.type)
@@ -318,16 +347,16 @@
                                 <el-button
                                     v-if="shiftHeld"
                                     style="color: #f56c6c"
-                                    text
+                                    circle
                                     :icon="Close"
-                                    size="small"
+                                    size=""
                                     :class="['button-pd-0', 'ml-5']"
                                     @click="hideNotification(scope.row)" />
                                 <el-button
                                     v-else
-                                    text
+                                    circle
                                     :icon="Close"
-                                    size="small"
+                                    size=""
                                     :class="['button-pd-0', 'ml-5']"
                                     @click="hideNotificationPrompt(scope.row)" />
                             </el-tooltip>
@@ -338,16 +367,16 @@
                             <el-button
                                 v-if="shiftHeld"
                                 style="color: #f56c6c"
-                                text
+                                circle
                                 :icon="Delete"
-                                size="small"
+                                size=""
                                 :class="['button-pd-0', 'ml-5']"
                                 @click="deleteNotificationLog(scope.row)" />
                             <el-button
                                 v-else
-                                text
+                                circle
                                 :icon="Delete"
-                                size="small"
+                                size=""
                                 :class="['button-pd-0', 'ml-5']"
                                 @click="deleteNotificationLogPrompt(scope.row)" />
                         </el-tooltip>
@@ -364,16 +393,16 @@
                             <el-button
                                 v-if="shiftHeld"
                                 style="color: #f56c6c; margin-left: 5px"
-                                text
+                                circle
                                 :icon="Close"
-                                size="small"
+                                size=""
                                 class="button-pd-0"
                                 @click="deleteNotificationLog(scope.row)" />
                             <el-button
                                 v-else
-                                text
+                                circle
                                 :icon="Delete"
-                                size="small"
+                                size=""
                                 :class="['button-pd-0', 'ml-5']"
                                 @click="deleteNotificationLogPrompt(scope.row)" />
                         </el-tooltip>
