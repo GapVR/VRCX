@@ -13,7 +13,7 @@ const AppDebug = reactive({
     debugWebRequests: false,
     debugFriendState: false,
     debugIPC: false,
-    debugVrcPlus: false,
+    debugVrcPlus: true,
     errorNoty: null,
     dontLogMeOut: false,
     endpointDomain: 'https://api.vrchat.cloud/api/1',
