@@ -140,9 +140,6 @@ namespace VRCX
                     Thread.Sleep(1000);
                 }
             }
-            catch (ThreadInterruptedException)
-            {
-            }
             catch (Exception ex)
             {
                 logger.Warn($"SystemMonitor thread exception: {ex}");
