@@ -11,6 +11,9 @@ NavMenu
 - Removed spacer & Direct Access.
 - Moved Custom Navigation, Theme, Logout to Help & Support.
 - Moved Settings to navbar.
+Notification
+- Merged Photo column to Message.
+- Restored proper Action buttons and increased column width to prevent misclicks.
 Sidebar
 - Restored round Direct Access button inbetween Search and Refresh friends.
 User Dialog
