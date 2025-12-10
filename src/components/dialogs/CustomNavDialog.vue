@@ -19,14 +19,14 @@
                     <div class="custom-nav-entry__controls">
                         <div class="custom-nav-entry__move">
                             <el-button circle size="small" :disabled="index === 0" @click="handleMoveEntry(index, -1)">
-                                <i class="ri-arrow-up-line"></i>
+                                <i class="ri-arrow-up-fill"></i>
                             </el-button>
                             <el-button
                                 circle
                                 size="small"
                                 :disabled="index === localLayout.length - 1"
                                 @click="handleMoveEntry(index, 1)">
-                                <i class="ri-arrow-down-line"></i>
+                                <i class="ri-arrow-down-fill"></i>
                             </el-button>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="custom-nav-entry__actions">
                             <el-button size="small" plain @click="openFolderEditor(index)">
-                                <i class="ri-edit-box-line"></i>
+                                <i class="ri-edit-box-fill"></i>
                                 {{ t('nav_menu.custom_nav.edit_folder') }}
                             </el-button>
                             <div class="custom-nav-entry__move">
@@ -48,14 +48,14 @@
                                     size="small"
                                     :disabled="index === 0"
                                     @click="handleMoveEntry(index, -1)">
-                                    <i class="ri-arrow-up-line"></i>
+                                    <i class="ri-arrow-up-fill"></i>
                                 </el-button>
                                 <el-button
                                     circle
                                     size="small"
                                     :disabled="index === localLayout.length - 1"
                                     @click="handleMoveEntry(index, 1)">
-                                    <i class="ri-arrow-down-line"></i>
+                                    <i class="ri-arrow-down-fill"></i>
                                 </el-button>
                             </div>
                         </div>
@@ -160,14 +160,14 @@
                                     size="small"
                                     :disabled="index === 0"
                                     @click="handleFolderItemMove(index, -1)">
-                                    <i class="ri-arrow-up-line"></i>
+                                    <i class="ri-arrow-up-fill"></i>
                                 </el-button>
                                 <el-button
                                     circle
                                     size="small"
                                     :disabled="index === folderEditor.data.items.length - 1"
                                     @click="handleFolderItemMove(index, 1)">
-                                    <i class="ri-arrow-down-line"></i>
+                                    <i class="ri-arrow-down-fill"></i>
                                 </el-button>
                             </div>
                             <el-button size="small" text @click="toggleFolderItem(key, false)">

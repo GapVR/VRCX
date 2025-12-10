@@ -14,7 +14,7 @@
                         <div>
                             <el-tooltip :content="t('view.charts.instance_activity.settings.header')" placement="top">
                                 <el-button style="margin-right: 5px" circle
-                                    ><i class="ri-settings-3-line"></i
+                                    ><i class="ri-settings-3-fill"></i
                                 ></el-button>
                             </el-tooltip>
                         </div>

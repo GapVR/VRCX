@@ -140,7 +140,7 @@
                                                             <span
                                                                 v-if="group.visibility === visibility"
                                                                 class="group-visibility-menu__check">
-                                                                <i class="ri-check-line"></i>
+                                                                <i class="ri-check-fill"></i>
                                                             </span>
                                                         </button>
                                                     </div>
@@ -313,7 +313,7 @@
                                 @click="handleGroupClick('history', historyGroupKey)">
                                 <div class="group-item__top">
                                     <span class="group-item__name">Local History</span>
-                                    <span class="group-item__count">{{ avatarHistory.length }}/100</span>
+                                    <span class="group-item__count">{{ avatarHistory.length }}/300</span>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                             <template v-else-if="isHistorySelected">
                                 <span>
                                     Local History
-                                    <small>{{ avatarHistory.length }}/100</small>
+                                    <small>{{ avatarHistory.length }}/300</small>
                                 </span>
                             </template>
                             <span v-else>No Group Selected</span>

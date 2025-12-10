@@ -81,7 +81,7 @@
                             class="name"
                             :class="userDialog.ref.$trustClass"
                             style="margin-right: 5px; margin-top: 5px">
-                            <i class="ri-shield-line"></i> {{ userDialog.ref.$trustLevel }}
+                            <i class="ri-shield-fill"></i> {{ userDialog.ref.$trustLevel }}
                         </el-tag>
                     </el-tooltip>
                     <el-tooltip
@@ -95,10 +95,10 @@
                             class="x-tag-age-verification"
                             style="margin-right: 5px; margin-top: 5px">
                             <template v-if="userDialog.ref.ageVerificationStatus === '18+'">
-                                <i class="ri-info-card-line"></i> 18+
+                                <i class="ri-info-card-fill"></i> 18+
                             </template>
                             <template v-else>
-                                <i class="ri-info-card-line"></i>
+                                <i class="ri-info-card-fill"></i>
                             </template>
                         </el-tag>
                     </el-tooltip>
@@ -112,7 +112,7 @@
                             size="small"
                             class="x-tag-friend"
                             style="margin-right: 5px; margin-top: 5px">
-                            <i class="ri-user-add-line"></i>
+                            <i class="ri-user-add-fill"></i>
                             {{ userDialog.ref.$friendNumber ? userDialog.ref.$friendNumber : '' }}
                         </el-tag>
                     </el-tooltip>
@@ -126,7 +126,7 @@
                             size="small"
                             class="x-tag-mutual-friend"
                             style="margin-right: 5px; margin-top: 5px">
-                            <i class="ri-group-line"></i>
+                            <i class="ri-group-fill"></i>
                             {{ userDialog.mutualFriendCount }}
                         </el-tag>
                     </el-tooltip>
@@ -165,7 +165,7 @@
                             size="small"
                             class="x-tag-platform-pc"
                             style="margin-right: 5px; margin-top: 5px">
-                            <i class="ri-computer-line"></i>
+                            <i class="ri-computer-fill"></i>
                         </el-tag>
                     </el-tooltip>
                     <el-tooltip v-else-if="userDialog.ref.$platform === 'android'" placement="top" content="Android">
@@ -175,7 +175,7 @@
                             size="small"
                             class="x-tag-platform-quest"
                             style="margin-right: 5px; margin-top: 5px">
-                            <i class="ri-android-line"></i>
+                            <i class="ri-android-fill"></i>
                         </el-tag>
                     </el-tooltip>
                     <el-tooltip v-else-if="userDialog.ref.$platform === 'ios'" placement="top" content="iOS">
@@ -185,7 +185,7 @@
                             size="small"
                             class="x-tag-platform-ios"
                             style="margin-right: 5px; margin-top: 5px"
-                            ><i class="ri-apple-line"></i
+                            ><i class="ri-apple-fill"></i
                         ></el-tag>
                     </el-tooltip>
                     <el-tag

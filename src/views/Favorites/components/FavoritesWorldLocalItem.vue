@@ -38,7 +38,7 @@
                                 class="favorites-search-card__action-btn"
                                 :type="deleteButtonType"
                                 @click.stop="handlePrimaryDeleteAction">
-                                <i class="ri-delete-bin-line"></i>
+                                <i class="ri-delete-bin-fill"></i>
                             </el-button>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
             <div class="favorites-search-card__actions">
                 <div class="favorites-search-card__action">
                     <el-button circle type="default" size="small" @click.stop="handleDeleteFavorite">
-                        <i class="ri-delete-bin-line"></i>
+                        <i class="ri-delete-bin-fill"></i>
                     </el-button>
                 </div>
             </div>

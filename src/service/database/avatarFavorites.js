@@ -63,7 +63,7 @@ const avatarFavorites = {
         );
     },
 
-    async getAvatarHistory(currentUserId, limit = 100) {
+    async getAvatarHistory(currentUserId, limit = 300) {
         var data = [];
         await sqliteService.execute((dbRow) => {
             var row = {

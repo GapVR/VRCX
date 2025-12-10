@@ -142,7 +142,7 @@
                                                             <span
                                                                 v-if="group.visibility === visibility"
                                                                 class="group-visibility-menu__check">
-                                                                <i class="ri-check-line"></i>
+                                                                <i class="ri-check-fill"></i>
                                                             </span>
                                                         </button>
                                                     </div>

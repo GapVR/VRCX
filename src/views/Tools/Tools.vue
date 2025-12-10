@@ -15,7 +15,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="showGroupCalendarDialog">
                                 <div class="tool-icon">
-                                    <i class="ri-calendar-event-line"></i>
+                                    <i class="ri-calendar-event-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.group.calendar') }}</div>
@@ -37,7 +37,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="showScreenshotMetadataDialog">
                                 <div class="tool-icon">
-                                    <i class="ri-screenshot-2-line"></i>
+                                    <i class="ri-screenshot-2-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.pictures.screenshot') }}</div>
@@ -50,7 +50,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="showGalleryDialog">
                                 <div class="tool-icon">
-                                    <i class="ri-multi-image-line"></i>
+                                    <i class="ri-multi-image-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.pictures.inventory') }}</div>
@@ -63,7 +63,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="openVrcPhotosFolder">
                                 <div class="tool-icon">
-                                    <i class="ri-folder-image-line"></i>
+                                    <i class="ri-folder-image-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.pictures.pictures.vrc_photos') }}</div>
@@ -76,7 +76,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="openVrcScreenshotsFolder">
                                 <div class="tool-icon">
-                                    <i class="ri-folder-image-line"></i>
+                                    <i class="ri-folder-image-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">
@@ -103,7 +103,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="showExportDiscordNamesDialog">
                                 <div class="tool-icon">
-                                    <i class="ri-discord-line"></i>
+                                    <i class="ri-discord-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.export.discord_names') }}</div>
@@ -116,7 +116,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="showNoteExportDialog">
                                 <div class="tool-icon">
-                                    <i class="ri-user-shared-line"></i>
+                                    <i class="ri-user-shared-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.export.export_notes') }}</div>
@@ -130,7 +130,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="showExportFriendsListDialog">
                                 <div class="tool-icon">
-                                    <i class="ri-user-shared-line"></i>
+                                    <i class="ri-user-shared-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.export.export_friend_list') }}</div>
@@ -143,7 +143,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="showExportAvatarsListDialog">
                                 <div class="tool-icon">
-                                    <i class="ri-user-shared-line"></i>
+                                    <i class="ri-user-shared-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.export.export_own_avatars') }}</div>
@@ -167,7 +167,7 @@
                         <el-card :body-style="{ padding: '0px' }" class="tool-card">
                             <div class="tool-content" @click="showEditInviteMessageDialog">
                                 <div class="tool-icon">
-                                    <i class="ri-edit-box-line"></i>
+                                    <i class="ri-edit-box-fill"></i>
                                 </div>
                                 <div class="tool-info">
                                     <div class="tool-name">{{ t('view.tools.other.edit_invite_message') }}</div>

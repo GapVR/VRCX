@@ -9,7 +9,7 @@
             style="display: inline-block; margin-bottom: 2px; margin-left: 5px">
         </span>
 
-        <i v-if="strict" style="display: inline-block; margin-left: 5px" class="ri-lock-line"></i>
+        <i v-if="strict" style="display: inline-block; margin-left: 5px" class="ri-lock-fill"></i>
     </span>
 </template>
 

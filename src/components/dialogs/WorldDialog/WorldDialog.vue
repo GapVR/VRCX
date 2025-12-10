@@ -70,7 +70,7 @@
                                     effect="plain"
                                     size="small"
                                     style="margin-right: 5px; margin-top: 5px">
-                                    <i class="ri-computer-line"></i
+                                    <i class="ri-computer-fill"></i
                                     ><span
                                         v-if="worldDialog.bundleSizes['standalonewindows']"
                                         :class="['x-grey', 'x-tag-platform-pc', 'x-tag-border-left']">
@@ -86,7 +86,7 @@
                                     effect="plain"
                                     size="small"
                                     style="margin-right: 5px; margin-top: 5px">
-                                    <i class="ri-android-line"></i
+                                    <i class="ri-android-fill"></i
                                     ><span
                                         v-if="worldDialog.bundleSizes['android']"
                                         :class="['x-grey', 'x-tag-platform-quest', 'x-tag-border-left']">
@@ -102,7 +102,7 @@
                                     effect="plain"
                                     size="small"
                                     style="margin-right: 5px; margin-top: 5px">
-                                    <i class="ri-apple-line"></i
+                                    <i class="ri-apple-fill"></i
                                     ><span
                                         v-if="worldDialog.bundleSizes['ios']"
                                         :class="['x-grey', 'x-tag-platform-ios', 'x-tag-border-left']">

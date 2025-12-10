@@ -17,7 +17,7 @@
                         plain
                         style="font-size: 19px; height: 36px; width: 44px; margin: 10px"
                         @click="showVRCXUpdateDialog"
-                        ><i class="ri-download-line"></i
+                        ><i class="ri-download-fill"></i
                     ></el-button>
                 </div>
 
@@ -159,7 +159,7 @@
             <div>
                 <el-tooltip :show-after="150" :content="t('nav_tooltip.help_support')" placement="right">
                     <div class="bottom-button">
-                        <i class="ri-question-line"></i>
+                        <i class="ri-question-fill"></i>
                     </div>
                 </el-tooltip>
             </div>
@@ -168,7 +168,7 @@
 
     <el-tooltip :show-after="150" :content="t('nav_tooltip.settings')" placement="right">
         <div class="bottom-button" @click="handleSettingsClick">
-            <i class="ri-settings-3-line"></i>
+            <i class="ri-settings-3-fill"></i>
         </div>
     </el-tooltip>
 </div>

@@ -71,7 +71,7 @@
                                 effect="plain"
                                 size="small"
                                 style="margin-right: 5px"
-                                ><i class="ri-computer-line"></i>
+                                ><i class="ri-computer-fill"></i>
                                 <span
                                     v-if="currentInstanceWorld.bundleSizes['standalonewindows']"
                                     :class="['x-grey', 'x-tag-platform-pc', 'x-tag-border-left']"
@@ -86,7 +86,7 @@
                                 effect="plain"
                                 size="small"
                                 style="margin-right: 5px"
-                                ><i class="ri-android-line"></i>
+                                ><i class="ri-android-fill"></i>
                                 <span
                                     v-if="currentInstanceWorld.bundleSizes['android']"
                                     :class="['x-grey', 'x-tag-platform-quest', 'x-tag-border-left']"
@@ -101,7 +101,7 @@
                                 effect="plain"
                                 size="small"
                                 style="margin-right: 5px"
-                                ><i class="ri-apple-line"></i>
+                                ><i class="ri-apple-fill"></i>
                                 <span
                                     v-if="currentInstanceWorld.bundleSizes['ios']"
                                     :class="['x-grey', 'x-tag-platform-ios', 'x-tag-border-left']"
@@ -292,7 +292,7 @@
                                 <span style="color: red">🔴{{ scope.row.timeoutTime }}s</span>
                             </el-tooltip>
                             <el-tooltip v-if="scope.row.ageVerified" placement="left" content="18+ Verified">
-                                <i class="ri-id-card-line"></i>
+                                <i class="ri-id-card-fill"></i>
                             </el-tooltip>
                         </template>
                     </el-table-column>
@@ -300,13 +300,13 @@
                         <template #default="scope">
                             <template v-if="scope.row.ref.$platform">
                                 <span v-if="scope.row.ref.$platform === 'standalonewindows'" style="color: #409eff"
-                                    ><i class="ri-computer-line"></i
+                                    ><i class="ri-computer-fill"></i
                                 ></span>
                                 <span v-else-if="scope.row.ref.$platform === 'android'" style="color: #67c23a"
-                                    ><i class="ri-android-line"></i
+                                    ><i class="ri-android-fill"></i
                                 ></span>
                                 <span v-else-if="scope.row.ref.$platform === 'ios'" style="color: #c7c7ce"
-                                    ><i class="ri-apple-line"></i
+                                    ><i class="ri-apple-fill"></i
                                 ></span>
                                 <span v-else>{{ scope.row.ref.$platform }}</span>
                             </template>

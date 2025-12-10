@@ -36,7 +36,7 @@
                                     <span class="extra">
                                         <span class="time">{{ formatDate(feed.created_at) }}</span>
                                         <span class="name" v-text="feed.displayName"></span>
-                                        <i class="ri-close-line" style="font-size: 21px"></i>
+                                        <i class="ri-close-fill" style="font-size: 21px"></i>
                                     </span>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                     <span class="extra">
                                         <span class="time">{{ formatDate(feed.created_at) }}</span>
                                         <span class="name" v-text="feed.displayName"></span>
-                                        <i class="ri-check-line" style="font-size: 21px"></i>
+                                        <i class="ri-check-fill" style="font-size: 21px"></i>
                                         <template v-if="feed.worldName">
                                             <i v-if="feed.isTraveling" class="ri-loader-line is-loading ml-5"></i>
                                             <VrLocation
@@ -71,7 +71,7 @@
                                         <span class="name" v-text="feed.displayName" style="margin-right: 5px"></span>
                                         <template v-if="feed.statusDescription === feed.previousStatusDescription">
                                             <i class="x-user-status" :class="statusClass(feed.previousStatus)"></i>
-                                            <i class="ri-arrow-right-line"></i>
+                                            <i class="ri-arrow-right-fill"></i>
                                             <i class="x-user-status" :class="statusClass(feed.status)"></i>
                                         </template>
                                         <template v-else>
@@ -118,7 +118,7 @@
                                 <div class="detail">
                                     <span class="extra">
                                         <span class="time">{{ formatDate(feed.created_at) }}</span>
-                                        <i class="ri-play-large-line"></i>
+                                        <i class="ri-play-large-fill"></i>
                                         <i class="ri-loader-line is-loading mr-5"></i>
                                         <span class="name" v-text="feed.displayName"></span>
                                     </span>
@@ -411,7 +411,7 @@
                                                 :grouphint="feed.groupName"></VrLocation>
                                         </template>
                                         <template v-else
-                                            ><i class="ri-bard-line"></i> User has spawned a portal
+                                            ><i class="ri-bard-fill"></i> User has spawned a portal
                                         </template>
                                     </span>
                                 </div>
@@ -486,7 +486,7 @@
                                 <div class="detail">
                                     <span class="extra">
                                         <span class="time">{{ formatDate(feed.created_at) }}</span>
-                                        <i class="ri-play-large-line"></i><i class="ri-prohibited-line mr-5"></i>
+                                        <i class="ri-play-large-fill"></i><i class="ri-prohibited-line mr-5"></i>
                                         <span class="name" v-text="feed.displayName"></span>
                                     </span>
                                 </div>
@@ -498,7 +498,7 @@
                                 <div class="detail">
                                     <span class="extra">
                                         <span class="time">{{ formatDate(feed.created_at) }}</span>
-                                        <i class="ri-play-reverse-large-line"></i
+                                        <i class="ri-play-reverse-large-fill"></i
                                         ><i class="ri-prohibited-line mr-5"></i>
                                         <span class="name" v-text="feed.displayName"></span>
                                     </span>
@@ -511,7 +511,7 @@
                                 <div class="detail">
                                     <span class="extra">
                                         <span class="time">{{ formatDate(feed.created_at) }}</span>
-                                        <i class="ri-play-large-line"></i><i class="ri-volume-mute-line mr-5"></i>
+                                        <i class="ri-play-large-fill"></i><i class="ri-volume-mute-line mr-5"></i>
                                         <span class="name" v-text="feed.displayName"></span>
                                     </span>
                                 </div>
@@ -523,7 +523,7 @@
                                 <div class="detail">
                                     <span class="extra">
                                         <span class="time">{{ formatDate(feed.created_at) }}</span>
-                                        <i class="ri-play-reverse-large-line"></i
+                                        <i class="ri-play-reverse-large-fill"></i
                                         ><i class="ri-volume-mute-line mr-5"></i>
                                         <span class="name" v-text="feed.displayName"></span>
                                     </span>
@@ -663,7 +663,7 @@
                                         <span class="name" v-text="feed.displayName" style="margin-right: 5px"></span>
                                         <template v-if="feed.statusDescription === feed.previousStatusDescription">
                                             <i class="x-user-status" :class="statusClass(feed.previousStatus)"></i>
-                                            <i class="ri-arrow-right-line"></i>
+                                            <i class="ri-arrow-right-fill"></i>
                                             <i class="x-user-status" :class="statusClass(feed.status)"></i>
                                         </template>
                                         <template v-else>
@@ -1322,7 +1322,7 @@
                                     :class="statusClass(feed.previousStatus)"
                                     style="margin-left: 10px; width: 20px; height: 20px"></i>
                                 <span>
-                                    <i class="ri-arrow-right-line"></i>
+                                    <i class="ri-arrow-right-fill"></i>
                                 </span>
                                 <i
                                     class="x-user-status"
@@ -1364,7 +1364,7 @@
                                 >iOS</span
                             >
                             <span v-if="!feed.inCache" style="color: #aaa; margin-left: 10px"
-                                ><i class="ri-download-line"></i>
+                                ><i class="ri-download-fill"></i>
                             </span>
                             <span v-text="feed.avatar.name" style="margin-left: 10px"></span>
                         </template>

@@ -16,7 +16,7 @@
         </div>
         <div class="friend-card__body">
             <div class="friend-card__signature" :title="friend.ref?.statusDescription">
-                <i v-if="friend.ref?.statusDescription" class="ri-pencil-line" style="opacity: 0.7"></i>
+                <i v-if="friend.ref?.statusDescription" class="ri-pencil-fill" style="opacity: 0.7"></i>
                 {{ friend.ref?.statusDescription || '&nbsp;' }}
             </div>
             <div v-if="displayInstanceInfo" @click.stop class="friend-card__world" :title="friend.worldName">

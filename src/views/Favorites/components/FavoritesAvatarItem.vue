@@ -13,13 +13,13 @@
                                 v-if="favorite.deleted"
                                 placement="top"
                                 :content="t('view.favorite.unavailable_tooltip')">
-                                <i class="ri-error-warning-line"></i>
+                                <i class="ri-error-warning-fill"></i>
                             </el-tooltip>
                             <el-tooltip
                                 v-if="!isLocalFavorite && favorite.ref?.releaseStatus === 'private'"
                                 placement="top"
                                 :content="t('view.favorite.private')">
-                                <i class="ri-lock-line"></i>
+                                <i class="ri-lock-fill"></i>
                             </el-tooltip>
                         </span>
                     </div>
@@ -58,7 +58,7 @@
                                     class="favorites-search-card__action-btn"
                                     :type="isLocalFavorite ? 'default' : 'default'"
                                     @click.stop="handlePrimaryDeleteAction">
-                                    <i class="ri-delete-bin-line"></i>
+                                    <i class="ri-delete-bin-fill"></i>
                                 </el-button>
                             </el-tooltip>
                         </div>
@@ -114,7 +114,7 @@
             <div class="favorites-search-card__actions">
                 <div class="favorites-search-card__action">
                     <el-button circle type="default" size="small" @click.stop="handlePrimaryDeleteAction">
-                        <i class="ri-delete-bin-line"></i>
+                        <i class="ri-delete-bin-fill"></i>
                     </el-button>
                 </div>
             </div>
