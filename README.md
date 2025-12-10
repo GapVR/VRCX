@@ -28,6 +28,9 @@ World Dialog
 Dialogs
 - Reduce padding from 20px to 5px.
 
+Icons
+- Replace line with filled icons.
+
 SystemMonitorCef
 - Log ThreadInterruptedException exceptions.
 
