@@ -12,6 +12,10 @@ NavMenu
 - Moved Custom Navigation, Theme, Logout to Help & Support.
 - Moved Settings to navbar.
 
+Friend Locations
+- Added toggle to hide users in Private.
+- Fixed Offline showing in Online and Favorites.
+
 Notification
 - Merged Photo column to Message.
 - Restored proper Action buttons and increased column width to prevent misclicks.

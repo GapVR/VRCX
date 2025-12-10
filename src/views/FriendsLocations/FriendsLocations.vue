@@ -25,6 +25,12 @@
                         }}</span>
                         <el-switch v-model="showSameInstance" />
                     </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center">
+                        <span class="friend-view__settings-label">{{
+                            t('view.settings.wrist_overlay.steamvr_wrist_overlay.hide_private_worlds')
+                        }}</span>
+                        <el-switch v-model="hidePrivateInstance" />
+                    </div>
                     <div class="friend-view__settings-row">
                         <span class="friend-view__settings-label">{{ t('view.friends_locations.scale') }}</span>
                         <div class="friend-view__scale-control">
@@ -225,6 +231,15 @@
         }
     });
 
+    const hidePrivateInstanceBase = ref(false);
+    const hidePrivateInstance = computed({
+        get: () => hidePrivateInstanceBase.value,
+        set: (value) => {
+            hidePrivateInstanceBase.value = value;
+            configRepository.setBool('VRCX_FriendLocationHidePrivateInstance', value);
+        }
+    });
+
     const settingsReady = ref(false);
 
     const PAGE_SIZE = 18;
@@ -336,6 +351,13 @@
         });
     };
 
+    const offlinePrivateFilter = (friends, hidePrivate = false) => {
+        return friends.filter(f =>
+            f.ref?.location !== 'offline' &&
+            (hidePrivate ? f.ref?.location !== 'private' : true)
+        );
+    };
+
     const filteredFriends = computed(() => {
         if (normalizedSearchTerm.value) {
             const pools = [
@@ -354,6 +376,7 @@
 
         switch (activeSegment.value) {
             case 'online': {
+
                 if (!showSameInstance.value) {
                     const sameEntries = sameInstanceEntries.value.map((entry) => ({
                         ...entry,
@@ -366,7 +389,7 @@
                             .filter((id) => typeof id === 'string' || typeof id === 'number')
                     );
 
-                    const remainingOnline = toEntries(onlineFriends.value)
+                    const remainingOnline = toEntries(offlinePrivateFilter(onlineFriends.value,hidePrivateInstance.value))
                         .filter((entry) => {
                             if (!entry?.id) {
                                 return true;
@@ -381,10 +404,10 @@
                     return [...sameEntries, ...remainingOnline];
                 }
 
-                return toEntries(onlineFriends.value);
+                return toEntries(offlinePrivateFilter(onlineFriends.value,hidePrivateInstance.value));
             }
             case 'favorite':
-                return toEntries(vipFriends.value);
+                return toEntries(offlinePrivateFilter(vipFriends.value,hidePrivateInstance.value));
             case 'same-instance':
                 return sameInstanceEntries.value;
             case 'active':
@@ -635,6 +658,15 @@
         });
     });
 
+    watch(hidePrivateInstance, () => {
+        if (!settingsReady.value) return;
+        itemsToShow.value = PAGE_SIZE;
+        nextTick(() => {
+            updateGridWidth();
+            maybeFillViewport();
+        });
+    });
+
     onMounted(() => {
         nextTick(() => {
             setupResizeHandling();
@@ -651,10 +683,11 @@
 
     async function loadInitialSettings() {
         try {
-            const [storedScale, storedSpacing, storedShowSameInstance] = await Promise.all([
+            const [storedScale, storedSpacing, storedShowSameInstance, storedHidePrivateInstance] = await Promise.all([
                 configRepository.getString('VRCX_FriendLocationCardScale', '1'),
                 configRepository.getString('VRCX_FriendLocationCardSpacing', '1'),
-                configRepository.getBool('VRCX_FriendLocationShowSameInstance', null)
+                configRepository.getBool('VRCX_FriendLocationShowSameInstance', null),
+                configRepository.getBool('VRCX_FriendLocationHidePrivateInstance', null)
             ]);
 
             const parsedScale = parseFloat(storedScale);
@@ -669,6 +702,9 @@
 
             if (storedShowSameInstance !== null && storedShowSameInstance !== undefined) {
                 showSameInstanceBase.value = Boolean(storedShowSameInstance);
+            }
+            if (storedHidePrivateInstance !== null && storedHidePrivateInstance !== undefined) {
+                hidePrivateInstanceBase.value = Boolean(storedHidePrivateInstance);
             }
         } catch (error) {
             console.error('Failed to load Friend Location preferences', error);
