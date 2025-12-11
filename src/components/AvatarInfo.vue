@@ -29,9 +29,9 @@
 
     const avatarTypeIcons = computed(() => {
         return avatarType.value === '(own)'
-            ? 'ri-lock-line'
+            ? 'ri-lock-fill'
             : avatarType.value === '(public)'
-              ? 'ri-lock-unlock-line'
+              ? 'ri-lock-unlock-fill'
               : '';
     });
 

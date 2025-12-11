@@ -227,7 +227,7 @@ const createDefaultNavLayout = () => [
         id: 'default-folder-social',
         nameKey: 'nav_tooltip.social',
         name: t('nav_tooltip.social'),
-        icon: 'ri-group-line',
+        icon: 'ri-group-fill',
         items: []
     },
     {
@@ -235,7 +235,7 @@ const createDefaultNavLayout = () => [
         id: 'default-folder-favorites',
         nameKey: 'nav_tooltip.favorites',
         name: t('nav_tooltip.favorites'),
-        icon: 'ri-star-line',
+        icon: 'ri-star-fill',
         items: []
     },
     {
@@ -243,13 +243,13 @@ const createDefaultNavLayout = () => [
         id: 'default-folder-more',
         nameKey: null,
         name: '...',
-        icon: 'ri-more-line',
+        icon: 'ri-more-fill',
         items: ['friends-locations', 'friend-list', 'charts', 'tools']
     },
 ];
 
     const navDefinitionMap = new Map(navDefinitions.map((item) => [item.key, item]));
-    const DEFAULT_FOLDER_ICON = 'ri-menu-fold-line';
+    const DEFAULT_FOLDER_ICON = 'ri-menu-fold-fill';
 
     const navPopoverWidth = 250;
     const navPopoverStyle = {

@@ -220,7 +220,7 @@
         },
         defaultFolderIcon: {
             type: String,
-            default: 'ri-menu-fold-line'
+            default: 'ri-menu-fold-fill'
         }
     });
 

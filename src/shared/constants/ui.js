@@ -1,98 +1,98 @@
 const navDefinitions = [
     {
         key: 'feed',
-        icon: 'ri-rss-line',
+        icon: 'ri-rss-fill',
         tooltip: 'nav_tooltip.feed',
         labelKey: 'nav_tooltip.feed',
         routeName: 'feed'
     },
     {
         key: 'friends-locations',
-        icon: 'ri-user-location-line',
+        icon: 'ri-user-location-fill',
         tooltip: 'nav_tooltip.friends_locations',
         labelKey: 'nav_tooltip.friends_locations',
         routeName: 'friends-locations'
     },
     {
         key: 'game-log',
-        icon: 'ri-history-line',
+        icon: 'ri-history-fill',
         tooltip: 'nav_tooltip.game_log',
         labelKey: 'nav_tooltip.game_log',
         routeName: 'game-log'
     },
     {
         key: 'player-list',
-        icon: 'ri-group-3-line',
+        icon: 'ri-group-3-fill',
         tooltip: 'nav_tooltip.player_list',
         labelKey: 'nav_tooltip.player_list',
         routeName: 'player-list'
     },
     {
         key: 'search',
-        icon: 'ri-search-line',
+        icon: 'ri-search-fill',
         tooltip: 'nav_tooltip.search',
         labelKey: 'nav_tooltip.search',
         routeName: 'search'
     },
     {
         key: 'favorite-friends',
-        icon: 'ri-user-heart-line',
+        icon: 'ri-user-heart-fill',
         tooltip: 'nav_tooltip.favorite_friends',
         labelKey: 'nav_tooltip.favorite_friends',
         routeName: 'favorite-friends'
     },
     {
         key: 'favorite-worlds',
-        icon: 'ri-earth-line',
+        icon: 'ri-earth-fill',
         tooltip: 'nav_tooltip.favorite_worlds',
         labelKey: 'nav_tooltip.favorite_worlds',
         routeName: 'favorite-worlds'
     },
     {
         key: 'favorite-avatars',
-        icon: 'ri-empathize-line',
+        icon: 'ri-empathize-fill',
         tooltip: 'nav_tooltip.favorite_avatars',
         labelKey: 'nav_tooltip.favorite_avatars',
         routeName: 'favorite-avatars'
     },
     {
         key: 'friend-log',
-        icon: 'ri-contacts-line',
+        icon: 'ri-contacts-fill',
         tooltip: 'nav_tooltip.friend_log',
         labelKey: 'nav_tooltip.friend_log',
         routeName: 'friend-log'
     },
     {
         key: 'friend-list',
-        icon: 'ri-booklet-line',
+        icon: 'ri-booklet-fill',
         tooltip: 'nav_tooltip.friend_list',
         labelKey: 'nav_tooltip.friend_list',
         routeName: 'friend-list'
     },
     {
         key: 'moderation',
-        icon: 'ri-shield-user-line',
+        icon: 'ri-shield-user-fill',
         tooltip: 'nav_tooltip.moderation',
         labelKey: 'nav_tooltip.moderation',
         routeName: 'moderation'
     },
     {
         key: 'notification',
-        icon: 'ri-notification-2-line',
+        icon: 'ri-notification-2-fill',
         tooltip: 'nav_tooltip.notification',
         labelKey: 'nav_tooltip.notification',
         routeName: 'notification'
     },
     {
         key: 'charts',
-        icon: 'ri-bar-chart-line',
+        icon: 'ri-bar-chart-fill',
         tooltip: 'nav_tooltip.charts',
         labelKey: 'nav_tooltip.charts',
         routeName: 'charts'
     },
     {
         key: 'tools',
-        icon: 'ri-tools-line',
+        icon: 'ri-tools-fill',
         tooltip: 'nav_tooltip.tools',
         labelKey: 'nav_tooltip.tools',
         routeName: 'tools'
